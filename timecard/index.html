@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1213599640819201"
+     crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Timecard｜続けるほど猫が育つ、ブラウザで使える打刻・作業時間記録アプリ</title>
+<meta name="description" content="My Timecardは、仕事・趣味・勉強の作業時間をワンタップで記録できるブラウザアプリです。集中タイマー、カレンダーでの振り返り、達成するほど猫をカスタムできるごほうび機能つき。PC・スマホ・タブレットでそのまま使えます。">
+<link rel="canonical" href="https://mim-crt.com/timecard/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="My Timecard｜続けるほど猫が育つ打刻アプリ">
+<meta property="og:description" content="仕事も趣味も勉強も。ワンタップで作業時間を記録して、続けるほど猫がよろこぶ打刻ページ。">
+<meta property="og:url" content="https://mim-crt.com/timecard/">
+<meta property="og:site_name" content="みむら いくみ | Ikumi Mimura">
+<meta property="og:image" content="https://timecard.mim-crt.com/ogp-cats.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My Timecard｜続けるほど猫が育つ打刻アプリ">
+<meta name="twitter:description" content="仕事も趣味も勉強も。ワンタップで作業時間を記録して、続けるほど猫がよろこぶ打刻ページ。">
+<meta name="twitter:image" content="https://timecard.mim-crt.com/ogp-cats.png">
+<meta name="theme-color" content="#F3F7FC">
+<link rel="icon" type="image/png" href="img/cat-hachiware.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "My Timecard",
+  "url": "https://timecard.mim-crt.com/",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Web",
+  "description": "仕事・趣味・勉強の作業時間をワンタップで記録できるブラウザアプリ。集中タイマー、カレンダーでの振り返り、続けるほど猫をカスタムできるごほうび機能つき。",
+  "author": { "@type": "Person", "name": "みむら いくみ", "url": "https://mim-crt.com/" }
+}
+</script>
+
+<!-- Google tag (gtag.js) ポートフォリオと同じ測定ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W814R72GLY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W814R72GLY');
+</script>
+
+<style>
+  :root{
+    --bg:#F3F7FC;
+    --ink:#2E2D38;
+    --sub:#6B6F82;
+    --faint:#9096AD;
+    --pink:#FF9EC7;
+    --pink-line:#FF7CAE;
+    --pink-shadow:#E888AE;
+    --pink-soft:#FFD3E4;
+    --sky:#8FCBEA;
+    --chip:#E7ECFB;
+    --cta:#BEDFFF;
+    --pad:64px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:"Noto Sans JP",sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  img{max-width:100%;}
+  a{text-decoration:none;}
+  h1,h2,h3{margin:0; font-family:"Noto Sans JP",sans-serif;}
+  p{margin:0;}
+  .pixel{image-rendering:pixelated; image-rendering:crisp-edges;}
+  .wrap{max-width:1280px; margin:0 auto;}
+  br.sp{display:none;}
+  @media (max-width:760px){ br.sp{display:inline;} }
+
+  .btn-primary{display:inline-block; background:var(--pink); color:#fff; font-weight:700; border:2px solid var(--pink-line); border-radius:10px; box-shadow:0 4px 0 var(--pink-shadow), 0 5px 8px rgba(255,111,160,.22); transition:transform .08s ease, box-shadow .08s ease;}
+  .btn-primary:hover{filter:brightness(1.03);}
+  .btn-primary:active{transform:translateY(3px); box-shadow:0 1px 0 var(--pink-shadow);}
+
+  /* ---- NAV ---- */
+  .nav{height:84px; padding:0 var(--pad); display:flex; align-items:center; justify-content:space-between; gap:16px;}
+  .logo{font-family:"Press Start 2P",monospace; font-size:16px; color:var(--pink); text-shadow:2px 2px 0 var(--pink-soft),4px 2px 0 var(--pink-soft); white-space:nowrap;}
+  .nav-right{display:flex; align-items:center; gap:20px;}
+  .nav-home{font-size:13px; color:var(--sub); font-weight:500;}
+  .nav-home:hover{color:var(--pink-line);}
+  .nav .btn-primary{font-size:14px; padding:11px 26px;}
+
+  /* ---- HERO ---- */
+  .hero{padding:55px var(--pad) 32px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:28px; background:radial-gradient(60% 60% at 50% 0%, #FDF3FD 35%, var(--bg) 70%);}
+  .lineup{display:flex; align-items:flex-end; gap:6px;}
+  .lineup img{height:auto;}
+  .lineup .s{width:58px;} .lineup .m{width:80px;} .lineup .l{width:116px;}
+  .hero h1{font-size:42px; line-height:1.5; font-weight:900; max-width:760px;}
+  .hero .lead{font-size:18px; font-weight:700; color:var(--pink);}
+  .hero .btn-primary{font-size:17px; padding:16px 44px; margin-top:8px;}
+  .hero .note{font-size:13px; color:var(--faint);}
+
+  /* ---- のびてるねこ区切り ---- */
+  .stretch{display:flex; width:100%; max-width:1050px; margin:0 auto; position:relative; z-index:5; height:80px;}
+  .stretch .tail,.stretch .head{width:80px; height:80px; flex:0 0 auto;}
+  .stretch .body{flex:1 1 auto; min-width:0; background-repeat:repeat-x; background-size:80px 80px; background-position:left center; image-rendering:pixelated;}
+  .stretch1 .body{background-image:url("img/stretch1-body.png"); background-size:100% 80px;}
+  .stretch2 .body{background-image:url("img/stretch2-body.png");}
+  .stretch3 .body{background-image:url("img/stretch3-body.png");}
+  .stretch4 .body{background-image:url("img/stretch4-body.png");}
+
+  /* ---- SECTIONS ---- */
+  section{scroll-margin-top:20px;}
+  .sec-head{text-align:center; display:flex; flex-direction:column; gap:12px;}
+  .sec-head h2{font-size:28px; font-weight:900;}
+  .sec-head p{font-size:15px; color:var(--sub); line-height:1.8;}
+
+  .features{padding:50px var(--pad) 30px; display:flex; flex-direction:column; gap:48px;}
+  .feature-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; align-items:start;}
+  .feature{background:#fff; border:2px solid var(--sky); border-radius:24px; padding:32px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:16px;}
+  .feature .ic{width:72px; height:72px; border-radius:50%; background:var(--chip); display:flex; align-items:center; justify-content:center;}
+  .feature .ic img{width:36px;}
+  .feature h3{font-size:18px; font-weight:700;}
+  .feature p{font-size:14px; color:var(--sub); line-height:1.7;}
+  .shot{display:block; width:100%; height:auto; border-radius:16px; border:2px solid var(--sky); background:#fff;}
+  .shot.crop-916{aspect-ratio:9/16; object-fit:cover; object-position:top center;}
+
+  .powerup{position:relative; overflow:hidden; padding:96px var(--pad) 30px;}
+  .deco{position:absolute; z-index:0; pointer-events:none;}
+  .powerup-inner{position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:40px;}
+  .notice{display:block; width:100%; max-width:560px; height:auto; border-radius:25px; box-shadow:0 4px 16px rgba(43,42,37,.08);}
+  .picker{display:block; width:100%; max-width:561px; height:auto; border-radius:20px; border:2px solid var(--sky); box-shadow:0 8px 24px rgba(43,42,37,.1); background:#fff;}
+  .powerbar{display:block; width:100%; max-width:1050px; height:auto;}
+  .secret{width:100%; max-width:870px; border-radius:40px; padding:40px 32px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; background:#FFF096BF;}
+  .secret .tag{font-size:12px; font-weight:700; letter-spacing:3px; color:#8A6400;}
+  .secret p{color:#6B5000; font-size:18px; font-weight:900; line-height:1.6;}
+  .secret .notice{max-width:585px;}
+  .secret .bubble{width:104px; height:104px; border-radius:50%; background:rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center;}
+  .secret .bubble img{width:68px;}
+
+  .screens{padding:65px var(--pad) 96px; background:#fff; display:flex; flex-direction:column; gap:48px;}
+  .screens .sec-head p{font-size:14px; color:var(--faint);}
+  .screen-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px; align-items:start;}
+  .screen{display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center;}
+  .screen .ic{width:56px; height:56px; border-radius:16px; background:var(--chip); display:flex; align-items:center; justify-content:center;}
+  .screen .ic img{width:28px;}
+  .screen h3{font-size:15px; font-weight:700;}
+  .screen p{font-size:12px; color:var(--sub); line-height:1.6;}
+  .screen .shot{border-radius:10px;}
+  .screen .gap{margin-top:18px;}
+
+  .author{padding:0 var(--pad) 96px; display:flex; align-items:center; gap:48px; max-width:1100px; margin:0 auto;}
+  .author .avatar{width:220px; height:220px; border-radius:50%; background:#fff; overflow:hidden; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+  .author .avatar img{width:140px; height:auto;}
+  .author .txt{display:flex; flex-direction:column; gap:14px;}
+  .author h2{font-size:24px; font-weight:900;}
+  .author .name{font-size:15px; font-weight:700; color:#E0609A;}
+  .author .bio{font-size:14px; color:var(--sub); line-height:1.8; max-width:640px;}
+  .pills{display:flex; flex-wrap:wrap; gap:12px;}
+  .pill{background:#fff; border:2px solid var(--sky); color:var(--sub); font-size:13px; font-weight:700; padding:9px 20px; border-radius:999px;}
+  .pill:hover{border-color:var(--pink-line); color:#E0609A;}
+  .credit{font-size:11px; color:#8E93A8;}
+
+  .start{padding:96px var(--pad); display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; background:var(--cta);}
+  .start h2{font-size:26px; font-weight:900; color:#fff; text-shadow:0 1px 2px rgba(60,110,170,.35);}
+  .start .btn-primary{font-size:16px; padding:16px 44px;}
+  .start .url{font-size:13px; color:#fff;}
+
+  footer{padding:28px var(--pad) 40px; display:flex; flex-wrap:wrap; justify-content:center; gap:10px 24px; font-size:12px; color:var(--faint);}
+  footer a{color:var(--sub);}
+  footer a:hover{color:#E0609A;}
+
+  /* ---- タブレット ---- */
+  @media (max-width:1024px){
+    :root{--pad:32px;}
+    .feature-grid{gap:20px;}
+    .screen-grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 20px;}
+  }
+  /* ---- スマホ（デザインのMobile版に対応） ---- */
+  @media (max-width:760px){
+    :root{--pad:20px;}
+    .nav{height:64px;}
+    .logo{font-size:11px; text-shadow:1px 1px 0 var(--pink-soft),2px 1px 0 var(--pink-soft);}
+    .nav-right{gap:12px;}
+    .nav-home{font-size:11px;}
+    .nav .btn-primary{font-size:12px; padding:9px 18px;}
+    .hero{padding:24px var(--pad) 40px; gap:18px; background:radial-gradient(70% 60% at 50% 0%, #FDF3FD 0%, var(--bg) 70%);}
+    .lineup{gap:3px;} .lineup .s{width:30px;} .lineup .m{width:42px;} .lineup .l{width:62px;}
+    .hero h1{font-size:24px;}
+    .hero .lead{font-size:14px;}
+    .hero .btn-primary{display:block; width:100%; font-size:15px; padding:15px 0; margin-top:4px;}
+    .hero .note{font-size:11px;}
+    .stretch{height:44px;}
+    .stretch .tail{width:30px; height:44px; object-fit:cover; object-position:right center;}
+    .stretch .head{width:44px; height:44px;}
+    .stretch .body{background-size:44px 44px;}
+    .stretch1 .body{background-size:100% 44px;}
+    .sec-head{gap:10px;}
+    .sec-head h2{font-size:21px;}
+    .sec-head p{font-size:12px;}
+    .features{padding:56px var(--pad) 30px; gap:32px;}
+    .feature-grid{grid-template-columns:1fr; gap:20px;}
+    .feature{border-radius:20px; padding:24px 20px; gap:12px;}
+    .feature .ic{width:56px; height:56px;} .feature .ic img{width:28px;}
+    .feature h3{font-size:16px;} .feature p{font-size:13px;}
+    .powerup{padding:70px var(--pad);}
+    .powerup-inner{gap:28px;}
+    .powerup .sec-head h2{font-size:22px;}
+    .powerup .sec-head p{font-size:13px;}
+    .picker{border-radius:16px;}
+    .powerbar{border-radius:16px;}
+    .secret{width:92%; border-radius:20px; padding:28px 20px; gap:10px; box-shadow:0 8px 22px rgba(210,180,60,.3);}
+    .secret .tag{font-size:10px; letter-spacing:2px;}
+    .secret p{font-size:14px;}
+    .secret .notice{border-radius:12px;}
+    .secret .bubble{width:80px; height:80px;} .secret .bubble img{width:52px;}
+    .deco{transform-origin:center; scale:.55;}
+    .deco.pc-only, .deco.top-area{display:none;}
+    .screens{padding:56px var(--pad); gap:28px;}
+    .screens .sec-head p{font-size:12px;}
+    .screen-grid{gap:16px;}
+    .screen{gap:8px;}
+    .screen .ic{width:44px; height:44px; border-radius:12px;} .screen .ic img{width:22px;}
+    .screen h3{font-size:13px;} .screen p{font-size:11px;}
+    .screen .shot{border-radius:9px;}
+    .screen .gap{margin-top:8px;}
+    .author{flex-direction:column; text-align:center; gap:16px; padding:10px var(--pad) 56px; background:#F4F8FB; max-width:none;}
+    .author .avatar{width:140px; height:140px;} .author .avatar img{width:96px;}
+    .author h2{font-size:19px;} .author .name{font-size:13px;} .author .bio{font-size:13px; text-align:left;}
+    .pills{justify-content:center; gap:10px;} .pill{font-size:12px; padding:8px 16px;}
+    .start{padding:56px var(--pad); gap:18px;}
+    .start h2{font-size:20px;}
+    .start .btn-primary{display:block; width:100%; font-size:15px; padding:15px 0;}
+  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a href="./" class="logo" aria-label="My Timecard トップ">My Timecard</a>
+    <div class="nav-right">
+      <a class="nav-home" href="/">mim-crt.com</a>
+      <a class="btn-primary js-start" data-loc="nav" href="https://timecard.mim-crt.com/">はじめる</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="lineup" aria-hidden="true">
+        <img class="pixel s" src="img/cat-secret.png" alt="" width="116" height="108">
+        <img class="pixel m" src="img/cat-white.png" alt="" width="116" height="108">
+        <img class="pixel l" src="img/cat-kijitora.png" alt="" width="116" height="108">
+        <img class="pixel l" src="img/cat-hachiware.png" alt="" width="116" height="108">
+        <img class="pixel m" src="img/cat-black.png" alt="" width="116" height="108">
+        <img class="pixel s" src="img/cat-mike.png" alt="" width="116" height="108">
+      </div>
+      <h1>継続は我が猫の為なり。<br>仕事も趣味も勉強も。<br>あなただけの打刻ページ。</h1>
+      <p class="lead">続けるほど猫が喜ぶ？！<br class="sp">シンプル打刻ページを飼いませんか？</p>
+      <a class="btn-primary js-start" data-loc="hero" href="https://timecard.mim-crt.com/">今すぐはじめる</a>
+      <p class="note">どこでも使える・入力かんたん・続けるほど猫が育つ</p>
+    </section>
+
+    <div class="stretch stretch1" aria-hidden="true">
+      <img class="pixel tail" src="img/stretch1-tail.png" alt="">
+      <div class="body"></div>
+      <img class="pixel head" src="img/stretch1-head.png" alt="">
+    </div>
+
+    <!-- 3つの特徴 -->
+    <section class="features" id="features">
+      <div class="sec-head">
+        <h2>3つの特徴</h2>
+        <p>ブラウザで使えるシンプルなタスク記録アプリ。<br>集中タイマーやタスク達成時のごほうびアイテムなど、タスクを習慣化するための仕掛けが盛りだくさん。<br>Web完結なので、PC・スマホ・タブレットなど端末を問わず、いつでもどこでも記録できます。</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="ic"><img class="pixel" src="img/icon-timecard.png" alt=""></div>
+          <h3>猫といっしょに計測</h3>
+          <p>Timecardタブでワンタップ<br>猫が進捗バーを歩く／伸びる</p>
+          <img class="shot crop-916" src="img/shot-timecard.webp" alt="Timecardタブで作業時間を計測している画面" loading="lazy" width="604" height="1347">
+        </article>
+        <article class="feature">
+          <div class="ic"><img class="pixel" src="img/icon-summary.png" alt=""></div>
+          <h3>達成感がひと目でわかる</h3>
+          <p>カレンダーで達成率をひと目で確認<br>タスクの目標を達成すると⭐がつく</p>
+          <img class="shot crop-916" src="img/shot-summary.webp" alt="Summaryタブのカレンダー画面" loading="lazy" width="604" height="1581">
+        </article>
+        <article class="feature">
+          <div class="ic"><img class="pixel" src="img/icon-gift.png" alt=""></div>
+          <h3>続けると猫がよろこぶ</h3>
+          <p>達成を重ねるとプレゼントが届き<br>猫をカスタムできる</p>
+          <img class="shot" src="img/shot-settings-art.webp" alt="おめかし・ごはんを選べるピクセルアート設定画面" loading="lazy" width="600" height="1168">
+        </article>
+      </div>
+    </section>
+
+    <div class="stretch stretch2" aria-hidden="true">
+      <img class="pixel tail" src="img/stretch2-tail.png" alt="">
+      <div class="body"></div>
+      <img class="pixel head" src="img/stretch2-head.png" alt="">
+    </div>
+
+    <!-- パワーアップ -->
+    <section class="powerup" id="powerup">
+      <img class="pixel deco top-area" src="img/deco-1.png" alt="" style="top:5%;left:5%;width:58px;rotate:-10deg">
+      <img class="pixel deco top-area" src="img/deco-2.png" alt="" style="top:8%;left:22%;width:45px;rotate:5deg">
+      <img class="pixel deco top-area pc-only" src="img/deco-3.png" alt="" style="top:4%;left:40%;width:54px;rotate:12deg">
+      <img class="pixel deco top-area" src="img/deco-4.png" alt="" style="top:5%;left:78%;width:56px;rotate:8deg">
+      <img class="pixel deco top-area pc-only" src="img/deco-5.png" alt="" style="top:9%;left:92%;width:49px;rotate:-6deg">
+      <img class="pixel deco top-area" src="img/deco-6.png" alt="" style="top:22%;left:4%;width:47px;rotate:16deg">
+      <img class="pixel deco top-area" src="img/deco-7.png" alt="" style="top:20%;left:88%;width:52px;rotate:-8deg">
+      <img class="pixel deco pc-only" src="img/deco-8.png" alt="" style="top:34%;left:3%;width:56px;rotate:6deg">
+      <img class="pixel deco pc-only" src="img/deco-1.png" alt="" style="top:36%;left:94%;width:43px;rotate:-12deg">
+      <img class="pixel deco" src="img/deco-2.png" alt="" style="top:52%;left:88%;width:38px;rotate:10deg">
+      <img class="pixel deco" src="img/deco-9.png" alt="" style="top:60%;left:4%;width:52px;rotate:-8deg">
+      <img class="pixel deco pc-only" src="img/deco-5.png" alt="" style="top:62%;left:94%;width:47px;rotate:14deg">
+      <img class="pixel deco" src="img/deco-3.png" alt="" style="top:76%;left:8%;width:56px;rotate:-6deg">
+      <img class="pixel deco pc-only" src="img/deco-7.png" alt="" style="top:78%;left:90%;width:49px;rotate:10deg">
+      <img class="pixel deco pc-only" src="img/deco-6.png" alt="" style="top:90%;left:6%;width:45px;rotate:-14deg">
+      <img class="pixel deco" src="img/deco-8.png" alt="" style="top:92%;left:86%;width:54px;rotate:8deg">
+
+      <div class="powerup-inner">
+        <div class="sec-head">
+          <h2>あなただけの猫にパワーアップ</h2>
+          <p>タスクをこなすたびに⭐がたまり、あなただけの猫にカスタムできる<br>がんばりがそのまま、猫のおしゃれとごはんになる</p>
+        </div>
+        <img class="notice" src="img/notice-present.webp" alt="「プレゼントがあるよ」の通知" loading="lazy" width="554" height="71">
+        <img class="picker" src="img/shot-outfit-picker.webp" alt="おめかし（首輪・リボン・王冠）とごはんの選択画面" loading="lazy" width="538" height="367">
+        <img class="powerbar" src="img/shot-powerup-bar.webp" alt="王冠をつけた猫が進捗バーを進む様子" loading="lazy" width="1206" height="223">
+        <div class="secret">
+          <span class="tag">SECRET</span>
+          <p>30日連続達成でひみつの猫が登場？！！</p>
+          <img class="notice" src="img/notice-secret.webp" alt="「シークレットが解禁されたよ」の通知" loading="lazy" width="553" height="71">
+          <div class="bubble"><img class="pixel" src="img/cat-secret.png" alt="シークレットねこのシルエット"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stretch stretch3" aria-hidden="true">
+      <img class="pixel tail" src="img/stretch3-tail.png" alt="">
+      <div class="body"></div>
+      <img class="pixel head" src="img/stretch3-head.png" alt="">
+    </div>
+
+    <!-- 画面の見方 -->
+    <section class="screens" id="screens">
+      <div class="sec-head">
+        <h2>画面の見方</h2>
+        <p>4つのタブでシンプルに操作できます</p>
+      </div>
+      <div class="screen-grid">
+        <div class="screen">
+          <div class="ic"><img class="pixel" src="img/icon-timecard.png" alt=""></div>
+          <h3>Timecard</h3>
+          <p>計測する 猫が進捗バーを歩く／伸びる</p>
+          <img class="shot" src="img/shot-timecard.webp" alt="Timecardタブの画面" loading="lazy" width="604" height="1347">
+          <p class="gap">自分で決められるメリハリ集中タイマー</p>
+          <img class="shot" src="img/shot-focus-timer.webp" alt="集中タイマーの残り時間表示" loading="lazy" width="604" height="375">
+          <img class="shot" src="img/shot-focus-templates.webp" alt="集中タイマーのテンプレート選択画面" loading="lazy" width="603" height="668">
+        </div>
+        <div class="screen">
+          <div class="ic"><img class="pixel" src="img/icon-tasks.png" alt=""></div>
+          <h3>Tasks</h3>
+          <p>タスクを作る・編集する</p>
+          <img class="shot" src="img/shot-tasks.webp" alt="Tasksタブのタスク一覧" loading="lazy" width="604" height="1312">
+          <img class="shot" src="img/shot-tasks-add.webp" alt="タスクを追加する画面" loading="lazy" width="604" height="1312">
+        </div>
+        <div class="screen">
+          <div class="ic"><img class="pixel" src="img/icon-summary.png" alt=""></div>
+          <h3>Summary</h3>
+          <p>カレンダーで振り返る</p>
+          <img class="shot" src="img/shot-summary.webp" alt="Summaryタブのカレンダー画面" loading="lazy" width="604" height="1581">
+        </div>
+        <div class="screen">
+          <div class="ic"><img class="pixel" src="img/icon-settings.png" alt=""></div>
+          <h3>Settings</h3>
+          <p>カスタマイズする</p>
+          <img class="shot" src="img/shot-settings.webp" alt="Settingsタブの画面" loading="lazy" width="482" height="2560">
+        </div>
+      </div>
+    </section>
+
+    <div class="stretch stretch4" aria-hidden="true" style="top:-40px">
+      <img class="pixel tail" src="img/stretch4-tail.png" alt="">
+      <div class="body"></div>
+      <img class="pixel head" src="img/stretch4-head.png" alt="">
+    </div>
+
+    <!-- 開発者 -->
+    <section class="author" id="author">
+      <div class="avatar"><img src="img/author.webp" alt="みむらいくみのアイコン" loading="lazy" width="360" height="259"></div>
+      <div class="txt">
+        <h2>ブリーダー（開発者）</h2>
+        <p class="name">みむらいくみ</p>
+        <p class="bio">フリーランスで働きながら、仕事も趣味もタスクがどんどん積み重なっていくのがしんどくて……「だったら自分で管理アプリ作っちゃおう」と思い立ったのがきっかけです。既存のアプリは設定が複雑で、気づけば三日坊主になりがちだったので、とにかく"続けやすさ"を大事にして作りました。<br>ご意見・ご要望があれば、お気軽にお問い合わせください。</p>
+        <div class="pills">
+          <a class="pill" href="/">ポートフォリオ</a>
+          <a class="pill" href="https://x.com/_mim_crt_" target="_blank" rel="noopener noreferrer">X（@_mim_crt_）</a>
+          <a class="pill" href="https://work.mim-crt.com/contact" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+        </div>
+        <p class="credit">猫のピクセル素材参考：kohacu</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="start" id="start">
+      <h2>今日から、あなただけの猫と一緒に</h2>
+      <a class="btn-primary js-start" data-loc="footer" href="https://timecard.mim-crt.com/">はじめる</a>
+      <p class="url">timecard.mim-crt.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© Ikumi Mimura</span>
+    <a href="/">mim-crt.com トップ</a>
+    <a href="/privacy.html">プライバシーポリシー・免責事項</a>
+  </footer>
+</div>
+
+<script>
+  // 「はじめる」クリックをGA4のイベントとして記録（どのボタンから押されたかがわかる）
+  document.querySelectorAll('.js-start').forEach(function(a){
+    a.addEventListener('click', function(){
+      if (typeof gtag === 'function') gtag('event', 'start_app', { link_location: a.dataset.loc || '' });
+    });
+  });
+</script>
+</body>
+</html>
