@@ -220,7 +220,10 @@
   .author .avatar{width:220px; height:220px; border-radius:50%; background:#fff; overflow:hidden; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
   .author .avatar img{width:140px; height:auto;}
   .author .txt{display:flex; flex-direction:column; gap:14px;}
+  .author-head{display:flex; flex-direction:column; gap:4px;}
+  .author .eyebrow{font-size:12px; font-weight:700; color:var(--sub); letter-spacing:.08em;}
   .author h2{font-size:24px; font-weight:900;}
+  .author .role{margin-left:12px; font-size:13px; font-weight:700; color:var(--sub);}
   .author .name{font-size:15px; font-weight:700; color:#E0609A;}
   .author .bio{font-size:14px; color:var(--sub); line-height:1.8; max-width:640px;}
   .pills{display:flex; flex-wrap:wrap; gap:12px;}
@@ -301,6 +304,7 @@
     .faq-mark{font-size:12px; width:14px; margin-top:5px;}
     .author{flex-direction:column; text-align:center; gap:16px; padding:32px var(--pad) 56px; background:#F4F8FB; max-width:none;}
     .author .avatar{width:140px; height:140px;} .author .avatar img{width:96px;}
+    .author .eyebrow{font-size:11px;} .author .role{font-size:12px;}
     .author h2{font-size:19px;} .author .name{font-size:13px;} .author .bio{font-size:13px; text-align:left;}
     .pills{justify-content:center; gap:10px;} .pill{font-size:12px; padding:8px 16px;}
     .start{padding:56px var(--pad); gap:18px;}
@@ -501,9 +505,12 @@
     <section class="author" id="author">
       <div class="avatar"><img src="img/author.webp" alt="みむらいくみのアイコン" loading="lazy" width="360" height="259"></div>
       <div class="txt">
-        <h2>ブリーダー（開発者）</h2>
-        <p class="name">みむらいくみ</p>
-        <p class="bio">フリーランスで働きながら、仕事も趣味もタスクがどんどん積み重なっていくのがしんどくて……「だったら自分で管理アプリ作っちゃおう」と思い立ったのがきっかけです。既存のアプリは設定が複雑で、気づけば三日坊主になりがちだったので、とにかく"続けやすさ"を大事にして作りました。<br>ご意見・ご要望があれば、お気軽にお問い合わせください。</p>
+        <div class="author-head">
+          <span class="eyebrow">猫のブリーダー</span>
+          <h2>つくった人</h2>
+        </div>
+        <p class="name">みむらいくみ<span class="role">3DCGデザイナー</span></p>
+        <p class="bio">3DCGデザイナーとして活動するかたわら、趣味でつくったアプリです。フリーランスで働きながら、仕事も趣味もタスクがどんどん積み重なっていくのがしんどくて……「だったら自分で管理アプリ作っちゃおう」と思い立ったのがきっかけです。既存のアプリは設定が複雑で、気づけば三日坊主になりがちだったので、とにかく"続けやすさ"を大事にして作りました。<br>ご意見・ご要望があれば、お気軽にお問い合わせください。</p>
         <div class="pills">
           <a class="pill" href="/">ポータルサイト</a>
           <a class="pill" href="https://x.com/_mim_crt_" target="_blank" rel="noopener noreferrer">X（@_mim_crt_）</a>
