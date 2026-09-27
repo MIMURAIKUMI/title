@@ -226,7 +226,7 @@
     outline-offset:3px;
   }
 
-  /* ▼ タブナビゲーション（Works / About / Diary / App / Contact） ▼ */
+  /* ▼ タブナビゲーション（About / Works / Diary / App / Contact） ▼ */
   .tab-nav{
     display:flex;
     justify-content:center;
@@ -1406,18 +1406,17 @@
   </div>
 
   <nav class="tab-nav" role="tablist" aria-label="ページ内カテゴリ" data-en-label="Page sections">
-    <button type="button" class="tab-btn" id="tab-works" role="tab" aria-selected="true" aria-controls="panel-works"><img class="tab-icon" src="icons/icon-works.png" alt="" aria-hidden="true"><span>Works</span></button>
-    <button type="button" class="tab-btn" id="tab-about" role="tab" aria-selected="false" aria-controls="panel-about" tabindex="-1"><img class="tab-icon" src="icons/icon-main.webp" alt="" aria-hidden="true"><span>About</span></button>
+    <button type="button" class="tab-btn" id="tab-about" role="tab" aria-selected="true" aria-controls="panel-about"><img class="tab-icon" src="icons/icon-main.webp" alt="" aria-hidden="true"><span>About</span></button>
+    <button type="button" class="tab-btn" id="tab-works" role="tab" aria-selected="false" aria-controls="panel-works" tabindex="-1"><img class="tab-icon" src="icons/icon-works.png" alt="" aria-hidden="true"><span>Works</span></button>
     <button type="button" class="tab-btn" id="tab-diary" role="tab" aria-selected="false" aria-controls="panel-diary" tabindex="-1"><img class="tab-icon" src="icons/icon-daily.png" alt="" aria-hidden="true"><span>Diary</span></button>
     <button type="button" class="tab-btn" id="tab-app" role="tab" aria-selected="false" aria-controls="panel-app" tabindex="-1"><img class="tab-icon" src="timecard/img/cat-hachiware.png" alt="" aria-hidden="true"><span>App</span></button>
     <button type="button" class="tab-btn" id="tab-contact" role="tab" aria-selected="false" aria-controls="panel-contact" tabindex="-1"><img class="tab-icon" src="icons/icon-telephone.png" alt="" aria-hidden="true"><span>Contact</span></button>
   </nav>
 
   <div class="tab-panels">
-  <section class="works-preview tab-panel" id="panel-works" role="tabpanel" aria-labelledby="tab-works">
-    <h2>Works</h2>
-    <p class="works-lead" data-en="I share personal 3DCG and graphic works here, updated from time to time.">
-      個人制作の3DCG・グラフィック作品を公開・随時更新しています。
+  <section class="works-preview tab-panel" id="panel-works" role="tabpanel" aria-labelledby="tab-works" hidden>
+    <p class="works-lead" data-en="I share 3DCG and graphic works here, updated from time to time.">
+      3DCG・グラフィック作品を公開・随時更新しています。
     </p>
 
     <p class="works-more works-more--top">
@@ -1561,8 +1560,7 @@
       </div>
     </div>
   </section>
-  <section class="tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" hidden>
-  <h2 class="panel-heading" data-en="About">About</h2>
+  <section class="tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
   <div class="about-inline">
     <p data-en="My theme is breathing life into &ldquo;cute&rdquo; through 3DCG.">「かわいい」に命を吹き込むことをテーマに、3DCG制作をしています。</p>
     <p data-en="I&rsquo;ve loved characters since I was little, and that love led me to a job making the movement itself that brings them to life. I taught myself CG, then spent about six years at a CG production company, where I got to work on everything from motion capture recording through editing, retargeting, and video production.">小さい頃からキャラクターが大好きで、そんなキャラクターに命を吹き込む「動きそのもの」を作る仕事に辿り着きました。独学でCGを勉強し、CG制作会社に就職して約6年、モーションキャプチャーの収録から編集・リターゲット、映像制作に携わらせてもらいました。</p>
@@ -1591,7 +1589,6 @@
   </section>
 
   <section class="tab-panel" id="panel-diary" role="tabpanel" aria-labelledby="tab-diary" hidden>
-    <h2 class="panel-heading" data-en="Diary">Diary</h2>
     <p class="panel-lead" data-en="A notebook for logging work activity, behind-the-scenes notes, and everyday things I notice.<br>I plan to update it regularly, including topics outside of 3DCG.">
       お仕事の活動記録や裏側、日々の気づきをまとめるノートです。<br>
       3DCG以外の話題も含め、随時更新していく予定です。
@@ -2086,7 +2083,6 @@ trackingStartDateから今日まで1日ずつ見て
   </section>
 
   <section class="tab-panel" id="panel-app" role="tabpanel" aria-labelledby="tab-app" hidden>
-    <h2 class="panel-heading" data-en="App">App</h2>
     <p class="panel-lead" data-en="Web apps I build and run myself.">
       個人で開発・公開しているWebアプリです。
     </p>
@@ -2136,7 +2132,6 @@ trackingStartDateから今日まで1日ずつ見て
   <section class="tab-panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
     <div class="footer-inner">
       <section id="contact">
-        <h2 data-en="Contact">Contact</h2>
         <p data-en="For work inquiries or questions about the app, please get in touch using the link below.">お仕事のご相談やアプリに関するお問い合わせは、以下のリンクよりお願いいたします。</p>
         <a href="https://work.mim-crt.com/contact" target="_blank" rel="noopener noreferrer" data-en="Contact form »">お問い合わせフォームへ »</a>
 
@@ -2773,7 +2768,7 @@ trackingStartDateから今日まで1日ずつ見て
 </script>
 
 <script>
-  // カテゴリタブ切り替え（Works / About / Diary / App / Contact）：同一ページ内、URLは変更しない
+  // カテゴリタブ切り替え（About / Works / Diary / App / Contact）：同一ページ内、URLは変更しない
   (function(){
     var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab-btn"));
     if (!tabs.length) return;
