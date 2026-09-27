@@ -1072,7 +1072,9 @@
   }
   /* ドット絵のアイコンは輪郭が濃いので、未選択時は他の3Dアイコンと
      同じくらいの淡さになるよう、色味と濃さをさらに落とす */
-  #tab-app .tab-icon{ image-rendering:pixelated; }
+  /* 猫の画像は横長（116x108）なので、正方形の枠に収めると上下に余白ができて
+     他のアイコンより小さく見える。高さを他と揃え、横幅は画像の比率に任せる */
+  #tab-app .tab-icon{ image-rendering:pixelated; width:auto; }
   #tab-app[aria-selected="false"] .tab-icon{
     filter:grayscale(100%) brightness(1.45) contrast(.55);
     opacity:.6;
