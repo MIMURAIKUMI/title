@@ -243,6 +243,9 @@
     border:none;
     margin:0;
     padding:6px 2px 10px;
+    /* ラベルの文字数（Contactなど）でボタン幅が変わるとアイコンの間隔が
+       不揃いになるので、全タブ同じ幅にする */
+    width:68px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -1072,9 +1075,9 @@
   }
   /* ドット絵のアイコンは輪郭が濃いので、未選択時は他の3Dアイコンと
      同じくらいの淡さになるよう、色味と濃さをさらに落とす */
-  /* 猫の画像は横長（116x108）なので、正方形の枠に収めると上下に余白ができて
-     他のアイコンより小さく見える。高さを他と揃え、横幅は画像の比率に任せる */
-  #tab-app .tab-icon{ image-rendering:pixelated; width:auto; }
+  /* 猫は左側にしっぽがある分、見た目の重心が左に寄って見えるので少し右へずらす
+     （選択時のtransformと干渉しないよう、transformではなくleftで調整） */
+  #tab-app .tab-icon{ image-rendering:pixelated; position:relative; left:3px; }
   #tab-app[aria-selected="false"] .tab-icon{
     filter:grayscale(100%) brightness(1.45) contrast(.55);
     opacity:.6;
@@ -1180,7 +1183,9 @@
   }
   /* タブが5つになったので、スマホ幅で1行に収まるよう間隔を詰める */
   @media (max-width:440px){
-    .tab-nav{ gap:14px; padding-left:12px; padding-right:12px; }
+    /* 画面幅を5等分して、アイコンの間隔を均等にする */
+    .tab-nav{ display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:0; padding-left:12px; padding-right:12px; }
+    .tab-btn{ width:auto; }
   }
   @media (max-width:600px){
     .app-features{ grid-template-columns:1fr; gap:22px; }
