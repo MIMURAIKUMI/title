@@ -604,6 +604,20 @@
     background:#000;
   }
 
+  .blog-media--wide img{
+    max-width:100%;
+    background:none;
+  }
+  .blog-media--tall img{
+    max-width:360px;
+    background:none;
+  }
+  .blog-body a{
+    color:var(--accent);
+    text-decoration:underline;
+    text-underline-offset:2px;
+    word-break:break-all;
+  }
   .blog-media figcaption{
     margin-top:6px;
     font-size:.64rem;
@@ -1587,17 +1601,58 @@
       <button type="button" class="filter-btn" data-filter="all" aria-pressed="true" data-en="All">すべて</button>
       <button type="button" class="filter-btn" data-filter="diary" aria-pressed="false" data-en="Diary">日記</button>
       <button type="button" class="filter-btn" data-filter="cg" aria-pressed="false" data-en="CG">CG</button>
-      <button type="button" class="filter-btn" data-filter="hobby1" aria-pressed="false" data-en="Hobby 1">趣味１</button>
-      <button type="button" class="filter-btn" data-filter="hobby2" aria-pressed="false" data-en="Hobby 2">趣味２</button>
+      <button type="button" class="filter-btn" data-filter="hobby1" aria-pressed="false" data-en="Digital Hobby">デジタルな趣味</button>
+      <button type="button" class="filter-btn" data-filter="hobby2" aria-pressed="false" data-en="Analog Hobby">アナログな趣味</button>
     </nav>
 
     <div class="blog-list">
       <article class="blog-post" data-cat="hobby1">
         <details class="blog-details">
           <summary>
+            <span class="blog-date">2026.09.26</span>
+            <span class="blog-title">タイムカードアプリに「ねこ」を住まわせた話 第4回 ― ねこたちの紹介ページ（LP）を公開しました</span>
+            <span class="blog-cat" data-en="Digital Hobby">デジタルな趣味</span>
+          </summary>
+          <div class="blog-body">
+            <figure class="blog-media blog-media--wide">
+              <img src="diary/timecard-lp-wide.jpg" width="1600" height="900" loading="lazy" alt="My Timecard 告知画像。6匹のピクセルアートの猫と、Timecard・Summary・Settingsの3画面。キャッチコピー「継続は我が猫の為なり。」">
+            </figure>
+            <p>シリーズ第4回は、アプリの中身ではなくその外側の話です。MyTIMECATを紹介するページ（LP）を公開しました！</p>
+            <p>👉 <a href="https://mim-crt.com/timecard/">https://mim-crt.com/timecard/</a></p>
+            <p>第1回〜第3回ではご褒美システム、ドット絵、外部サービスとの同期と、アプリの内側の話をしてきました。今回は「このアプリがどんなものか」を初めて見る人に伝えるためのページを作った、という報告です。</p>
+
+            <h3>どんなアプリ？</h3>
+            <p>改めて紹介すると、MyTIMECATはブラウザで開くだけで使えるタスク記録アプリです。インストール不要で、PC・スマホ・タブレットのどれからでも記録できます。画像の3画面は左から Timecard・Summary・Settings です。</p>
+            <ul>
+              <li><strong>Timecard</strong>：ワンタップで記録。自分の猫が一緒に歩いてくれます。集中タイマーつき</li>
+              <li><strong>Tasks</strong>：タスクの作成・編集</li>
+              <li><strong>Summary</strong>：カレンダーで達成率を振り返り。目標を達成すると⭐がもらえます</li>
+              <li><strong>Settings</strong>：ごほうびで届くアイテムで、猫をおめかし</li>
+            </ul>
+            <p>記録を続けるほど猫へのプレゼントが増えていく仕組みで、30日連続で達成すると……ひみつの猫が登場するかも？ 猫は全部で6種類いるので、ぜひ会いに来てください。</p>
+
+            <h3>LPで伝えたかったこと</h3>
+            <p>キャッチコピーは「<strong>継続は我が猫の為なり。</strong>」にしました。自分がこのアプリを作ったのは、既存の管理アプリが続かなかったから。なので「機能がたくさんあります」よりも「続けると猫がよろこぶ」という一点が伝わるページを目指しています。</p>
+            <p>ページの中では、第2回で紹介した「のびるねこ」たちがセクションの区切りでにょーんと伸びています。スクロールしながら探してみてください。</p>
+
+            <h3>ログインなし・無料で使えます</h3>
+            <p>ログインしなくてもすぐに使えて、すべての機能が無料です。Googleアカウントかメールアドレスでログインすると、第3回で格闘した同期機能のおかげで、複数の端末で同じデータを使えるようになります。</p>
+            <h3>まとめ</h3>
+            <p>9月1日の「アプリ開発に手を出しました」から約1か月、自分用に作り始めたアプリが、ようやく人に紹介できる形になりました。「三日坊主になりがち」な方にこそ使ってもらえたらうれしいです。ご意見・ご要望もお気軽にどうぞ！</p>
+            <figure class="blog-media blog-media--tall">
+              <img src="diary/timecard-lp-tall.jpg" width="1080" height="1350" loading="lazy" alt="My Timecard 告知画像（縦長）。ピクセルアートの猫たちとアプリの3画面、URL mim-crt.com/timecard">
+            </figure>
+            <p>▶ アプリをはじめる：<a href="https://timecard.mim-crt.com/">https://timecard.mim-crt.com/</a></p>
+          </div>
+        </details>
+      </article>
+
+      <article class="blog-post" data-cat="hobby1">
+        <details class="blog-details">
+          <summary>
             <span class="blog-date">2026.09.22</span>
             <span class="blog-title">自作打刻キオスクを作る(3) 筐体作成編 〜たまごっちケースを断念、3Dプリンターで自作へ〜</span>
-            <span class="blog-cat" data-en="Hobby 1">趣味１</span>
+            <span class="blog-cat" data-en="Digital Hobby">デジタルな趣味</span>
           </summary>
           <div class="blog-body">
             <h3>この記事について</h3>
@@ -1643,7 +1698,7 @@
           <summary>
             <span class="blog-date">2026.09.19</span>
             <span class="blog-title">自作打刻キオスクを作る(2) Raspberry Pi組み込み編 〜そもそもラズパイって何?から、はんだ付け完了まで〜</span>
-            <span class="blog-cat" data-en="Hobby 1">趣味１</span>
+            <span class="blog-cat" data-en="Digital Hobby">デジタルな趣味</span>
           </summary>
           <div class="blog-body">
             <h3>この記事について</h3>
@@ -1723,7 +1778,7 @@
           <summary>
             <span class="blog-date">2026.09.16</span>
             <span class="blog-title">自作打刻キオスクを作る(1) アプリ開発編 〜画面サイズとボタン操作、2つの戦い〜</span>
-            <span class="blog-cat" data-en="Hobby 1">趣味１</span>
+            <span class="blog-cat" data-en="Digital Hobby">デジタルな趣味</span>
           </summary>
           <div class="blog-body">
             <h3>この記事について</h3>
@@ -1770,7 +1825,7 @@
           <summary>
             <span class="blog-date">2026.09.13</span>
             <span class="blog-title">タイムカードアプリに「ねこ」を住まわせた話 第3回 ― 外部サービスと繋げたら地獄を見た</span>
-            <span class="blog-cat" data-en="Hobby 1">趣味１</span>
+            <span class="blog-cat" data-en="Digital Hobby">デジタルな趣味</span>
           </summary>
           <div class="blog-body">
             <p>シリーズ第3回は、MyTIMECATに「ログインすれば他の端末とデータが自動で同期される」機能（Firebaseという外部サービスを使いました）を足したときの話です。この部分の実装や調査はすべてAI（Claude）にお願いしていたのですが、正直、このプロジェクトでいちばん時間がかかったのがここでした。難しい内容なので、細かい仕組みは省いて「何が起きていたのか」を中心に書きます。</p>
@@ -1842,7 +1897,7 @@
           <summary>
             <span class="blog-date">2026.09.09</span>
             <span class="blog-title">タイムカードアプリに「ねこ」を住まわせた話 第2回 ― ドット絵を描いて、着せる</span>
-            <span class="blog-cat" data-en="Hobby 1">趣味１</span>
+            <span class="blog-cat" data-en="Digital Hobby">デジタルな趣味</span>
           </summary>
           <div class="blog-body">
             <p>シリーズ第2回は、ねこに着せるドット絵をどう作って、どうアプリに組み込んだかという話です。前半は「エクセルでドット絵を描くための専用ツールを自作した」話、後半は「そのドット絵を実際にねこへ合成表示するときにハマった話」を書きます。</p>
@@ -1923,7 +1978,7 @@
           <summary>
             <span class="blog-date">2026.09.05</span>
             <span class="blog-title">タイムカードアプリに「ねこ」を住まわせた話 第1回 ― ご褒美システムの仕組みを作る</span>
-            <span class="blog-cat" data-en="Hobby 1">趣味１</span>
+            <span class="blog-cat" data-en="Digital Hobby">デジタルな趣味</span>
           </summary>
           <div class="blog-body">
             <p>自分用のタイムカードアプリ「MyTIMECAT」に、タスクをがんばった分だけねこが着飾っていくご褒美システムを実装しました。この記事はシリーズの第1回として、まず「仕組みそのもの」をどう設計し、どう作り直していったかをまとめます。</p>
@@ -1979,7 +2034,7 @@ trackingStartDateから今日まで1日ずつ見て
           <summary>
             <span class="blog-date">2026.09.01</span>
             <span class="blog-title">アプリ開発に手を出しました</span>
-            <span class="blog-cat" data-en="Hobby 1">趣味１</span>
+            <span class="blog-cat" data-en="Digital Hobby">デジタルな趣味</span>
           </summary>
           <div class="blog-body">
             <p>趣味でアプリを作ってみました！</p>
@@ -2015,7 +2070,7 @@ trackingStartDateから今日まで1日ずつ見て
       </article>
 
       <!-- 今後の記事用テンプレート（本番非表示）。新しい記事を書くときはこのコメントを解除して中身を書き換えてください。
-           data-cat は diary / cg / hobby1 / hobby2 のいずれかを指定してください。
+           data-cat は diary / cg / hobby1（デジタルな趣味） / hobby2（アナログな趣味） のいずれかを指定してください。
       <article class="blog-post" data-cat="diary">
         <details class="blog-details">
           <summary>
@@ -2696,7 +2751,7 @@ trackingStartDateから今日まで1日ずつ見て
 </script>
 
 <script>
-  // Diaryタブ内：カテゴリー絞り込み（すべて / 日記 / CG / 趣味１ / 趣味２）
+  // Diaryタブ内：カテゴリー絞り込み（すべて / 日記 / CG / デジタルな趣味 / アナログな趣味）
   (function(){
     var filterBtns = document.querySelectorAll(".diary-filter .filter-btn");
     var posts = document.querySelectorAll(".blog-list .blog-post");
