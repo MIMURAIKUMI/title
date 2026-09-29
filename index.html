@@ -2246,6 +2246,87 @@ trackingStartDateから今日まで1日ずつ見て
         var hitDirection = new THREE.Vector3();
         var upVector = new THREE.Vector3(0, 1, 0);
 
+        // === PC（マウス操作）のとき、顔がマウスの方を向く ===
+        var finePointerMQ = window.matchMedia ? window.matchMedia("(hover: hover) and (pointer: fine)") : null;
+        var followMouse = !!(finePointerMQ && finePointerMQ.matches);
+        // 首を振る最大角度（ラジアン）。数値を大きくすると大きく振り向く
+        var LOOK_MAX_YAW = 0.7;   // 左右 約40度
+        var LOOK_MAX_PITCH = 0.4; // 上下 約23度
+        // 追従のなめらかさ（0〜1）。小さいほどゆっくり追いかける
+        var LOOK_SMOOTH = 0.08;
+        var lookTarget = { yaw: 0, pitch: 0 };
+        var lookCurrent = { yaw: 0, pitch: 0 };
+        var tmpQuat = new THREE.Quaternion();
+
+        function updateLookTarget(clientX, clientY) {
+            var rect = canvas.getBoundingClientRect();
+            var cx = rect.left + rect.width / 2;
+            var cy = rect.top + rect.height / 2;
+            // モデルの中心からマウスまでの距離を、画面サイズで正規化（-1〜1）
+            var nx = (clientX - cx) / (window.innerWidth / 2);
+            var ny = (clientY - cy) / (window.innerHeight / 2);
+            nx = Math.max(-1, Math.min(1, nx));
+            ny = Math.max(-1, Math.min(1, ny));
+            lookTarget.yaw = nx * LOOK_MAX_YAW;
+            lookTarget.pitch = ny * LOOK_MAX_PITCH;
+        }
+
+        function resetLookTarget() {
+            lookTarget.yaw = 0;
+            lookTarget.pitch = 0;
+        }
+
+        function updateLook() {
+            if (!baseGroup) return;
+            lookCurrent.yaw += (lookTarget.yaw - lookCurrent.yaw) * LOOK_SMOOTH;
+            lookCurrent.pitch += (lookTarget.pitch - lookCurrent.pitch) * LOOK_SMOOTH;
+            baseGroup.rotation.set(lookCurrent.pitch, lookCurrent.yaw, 0, "YXZ");
+        }
+
+        window.addEventListener("pointermove", function (e) {
+            if (!followMouse || e.pointerType !== "mouse") return;
+            updateLookTarget(e.clientX, e.clientY);
+        }, { passive: true });
+        // マウスがウィンドウの外に出たら正面に戻す
+        document.documentElement.addEventListener("mouseleave", function () {
+            if (followMouse) resetLookTarget();
+        });
+
+        function applyPointerMode() {
+            if (!controls) return;
+            if (followMouse) {
+                // PC：自動回転とドラッグ回転を止め、カメラを正面に戻してマウス追従にする
+                controls.autoRotate = false;
+                controls.enableRotate = false;
+                if (resumeTimer) clearTimeout(resumeTimer);
+                var d = camera.position.distanceTo(controls.target);
+                camera.position.set(0, 0, d);
+                controls.update();
+            } else {
+                // スマホ・タブレット：従来どおり自動回転＋ドラッグ回転
+                controls.enableRotate = true;
+                controls.autoRotate = !prefersReducedMotion;
+                resetLookTarget();
+            }
+        }
+
+        if (finePointerMQ) {
+            var onPointerModeChange = function (e) {
+                followMouse = e.matches;
+                applyPointerMode();
+            };
+            if (finePointerMQ.addEventListener) finePointerMQ.addEventListener("change", onPointerModeChange);
+            else if (finePointerMQ.addListener) finePointerMQ.addListener(onPointerModeChange);
+        }
+
+        // ワールド座標の方向を、baseGroup（首振り）内のローカル方向に変換して揺れの向きを決める
+        function setJiggleDirection(worldDir) {
+            baseGroup.getWorldQuaternion(tmpQuat).invert();
+            hitDirection.copy(worldDir).applyQuaternion(tmpQuat).normalize();
+            jiggleGroup.quaternion.setFromUnitVectors(upVector, hitDirection);
+            meshContainer.quaternion.copy(jiggleGroup.quaternion).invert();
+        }
+
         function triggerJiggle() {
             if (!pivotGroup) return;
             jiggleStart = performance.now();
@@ -2403,6 +2484,7 @@ trackingStartDateから今日まで1日ずつ見て
                     camera.position.set(0, 0, dist);
                     controls.target.set(0, 0, 0);
                     controls.update();
+                    applyPointerMode();
 
                     wrap.classList.add("is-loaded");
                     animate();
@@ -2435,6 +2517,7 @@ trackingStartDateから今日まで1日ずつ見て
         function animate() {
             requestAnimationFrame(animate);
             controls.update();
+            updateLook();
             updateJiggle();
             renderer.render(scene, camera);
         }
@@ -2464,21 +2547,20 @@ trackingStartDateから今日まで1日ずつ見て
                 raycaster.setFromCamera(mouse, camera);
                 var intersects = raycaster.intersectObject(meshContainer, true);
 
+                var worldDir;
                 if (intersects.length > 0) {
                     // 3-A. モデルの表面に当たった場合：中心から当たった位置への方向を計算
                     var hitPoint = intersects[0].point;
                     var worldCenter = new THREE.Vector3();
                     baseGroup.getWorldPosition(worldCenter);
-                    hitDirection.copy(hitPoint).sub(worldCenter).normalize();
+                    worldDir = hitPoint.clone().sub(worldCenter);
                 } else {
                     // 3-B. モデルの背景（余白）をタップした場合：デフォルトで頭の上をタップしたことにする
-                    hitDirection.set(0, 1, 0);
+                    worldDir = new THREE.Vector3(0, 1, 0);
                 }
 
-                // 4. ピボットの向きを、タップした方向（hitDirection）に向ける
-                jiggleGroup.quaternion.setFromUnitVectors(upVector, hitDirection);
-                // 5. モデル本体は逆回転させて、見た目の向きが変わらないようにする
-                meshContainer.quaternion.copy(jiggleGroup.quaternion).invert();
+                // 4. ピボットの向きをタップした方向に向け、5. モデル本体は逆回転させて見た目の向きを保つ
+                setJiggleDirection(worldDir);
 
                 // ぷるぷるアニメーション開始
                 triggerJiggle();
@@ -2489,9 +2571,8 @@ trackingStartDateから今日まで1日ずつ見て
             if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 // キーボード操作時は上からタップしたことにする
-                hitDirection.set(0, 1, 0);
-                jiggleGroup.quaternion.setFromUnitVectors(upVector, hitDirection);
-                meshContainer.quaternion.copy(jiggleGroup.quaternion).invert();
+                if (!meshContainer) return;
+                setJiggleDirection(new THREE.Vector3(0, 1, 0));
                 triggerJiggle();
             }
         });
