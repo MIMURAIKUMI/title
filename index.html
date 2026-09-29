@@ -2251,7 +2251,7 @@ trackingStartDateから今日まで1日ずつ見て
         var followMouse = !!(finePointerMQ && finePointerMQ.matches);
         // 首を振る最大角度（ラジアン）。数値を大きくすると大きく振り向く
         var LOOK_MAX_YAW = 0.7;   // 左右 約40度
-        var LOOK_MAX_PITCH = 0.4; // 上下 約23度
+        var LOOK_MAX_PITCH = 0.6; // 上下 約34度
         // 追従のなめらかさ（0〜1）。小さいほどゆっくり追いかける
         var LOOK_SMOOTH = 0.08;
         var lookTarget = { yaw: 0, pitch: 0 };
@@ -2264,7 +2264,10 @@ trackingStartDateから今日まで1日ずつ見て
             var cy = rect.top + rect.height / 2;
             // モデルの中心からマウスまでの距離を、画面サイズで正規化（-1〜1）
             var nx = (clientX - cx) / (window.innerWidth / 2);
-            var ny = (clientY - cy) / (window.innerHeight / 2);
+            // 上下は、モデルから画面の上端・下端までの距離で割る
+            // （モデルが画面の上寄りにあっても、上方向にもしっかり振り向くように）
+            var dy = clientY - cy;
+            var ny = dy < 0 ? dy / Math.max(cy, 80) : dy / Math.max(window.innerHeight - cy, 80);
             nx = Math.max(-1, Math.min(1, nx));
             ny = Math.max(-1, Math.min(1, ny));
             lookTarget.yaw = nx * LOOK_MAX_YAW;
