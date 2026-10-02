@@ -2413,9 +2413,12 @@ trackingStartDateから今日まで1日ずつ見て
                 if (resumeTimer) clearTimeout(resumeTimer);
             });
             controls.addEventListener("end", function () {
-                if (prefersReducedMotion) return;
+                // PC（マウス追従中）はクリック後も自動回転を復活させない
+                if (prefersReducedMotion || followMouse) return;
                 if (resumeTimer) clearTimeout(resumeTimer);
-                resumeTimer = setTimeout(function () { controls.autoRotate = true; }, 300);
+                resumeTimer = setTimeout(function () {
+                    if (!followMouse) controls.autoRotate = true;
+                }, 300);
             });
 
             resize();
