@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<link rel="preload" href="./environment.hdr" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="./icon.glb" as="fetch" crossorigin="anonymous">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1213599640819201"
      crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2427,6 +2429,18 @@ trackingStartDateから今日まで1日ずつ見て
                 new ResizeObserver(resize).observe(wrap);
             }
 
+            // モデルとHDR照明の両方が揃ってから表示する（HDR未到着の暗い状態を見せないため）
+            var modelReady = false;
+            var envReady = false;
+            var revealed = false;
+            function tryReveal() {
+                if (revealed || !modelReady || !envReady) return;
+                revealed = true;
+                revealModel();
+            }
+            // HDRが極端に遅い・失敗した場合でも、一定時間後には表示する保険
+            setTimeout(function () { envReady = true; tryReveal(); }, 6000);
+
             var HDR_ROTATION_DEG = 224;
             new RGBELoader().load(
                 "./environment.hdr",
@@ -2437,6 +2451,14 @@ trackingStartDateから今日まで1日ずつ見て
                     scene.environment = envMap;
                     hdrTexture.dispose();
                     pmrem.dispose();
+                    envReady = true;
+                    tryReveal();
+                },
+                undefined,
+                function (err) {
+                    console.error("[icon3d] HDR environment failed to load:", err);
+                    envReady = true;
+                    tryReveal();
                 }
             );
 
@@ -2514,24 +2536,32 @@ trackingStartDateから今日まで1日ずつ見て
                     controls.update();
                     applyPointerMode();
 
-                    wrap.classList.add("is-loaded");
-                    animate();
-
-                    // ▼ 読み込み完了時にSVGアニメーションを発火 ▼
-                    if (!prefersReducedMotion) {
-                        var hintEl = document.getElementById("touch-hint");
-                        requestAnimationFrame(function () {
-                            wrap.classList.add("show-hint");
-                        });
-                        if (hintEl) {
-                            // アニメーションが終わったら要素を自動で削除して軽くする
-                            hintEl.addEventListener("animationend", function () {
-                                hintEl.remove();
-                            }, { once: true });
-                        }
-                    }
+                    modelReady = true;
+                    tryReveal();
                 }
             );
+
+            function revealModel() {
+                // 最初のフレームを描画してからフェードインさせる（シェーダー準備中のチラつき防止）
+                renderer.compile(scene, camera);
+                renderer.render(scene, camera);
+                wrap.classList.add("is-loaded");
+                animate();
+
+                // ▼ 読み込み完了時にSVGアニメーションを発火 ▼
+                if (!prefersReducedMotion) {
+                    var hintEl = document.getElementById("touch-hint");
+                    requestAnimationFrame(function () {
+                        wrap.classList.add("show-hint");
+                    });
+                    if (hintEl) {
+                        // アニメーションが終わったら要素を自動で削除して軽くする
+                        hintEl.addEventListener("animationend", function () {
+                            hintEl.remove();
+                        }, { once: true });
+                    }
+                }
+            }
         }
 
         function resize() {
