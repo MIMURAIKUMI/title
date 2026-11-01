@@ -234,7 +234,7 @@
     justify-content:center;
     align-items:center;
     flex-wrap:wrap;
-    gap:clamp(28px, 6vw, 52px);
+    gap:clamp(20px, 5vw, 44px);
     padding:0 24px clamp(28px, 4vh, 40px);
   }
 
@@ -1057,6 +1057,27 @@
     opacity:1;
   }
 
+  /* ▼ 「SHOP」タブ：BASEショップへの案内 ▼ */
+  .shop-panel{ padding:0 24px; }
+  .shop-card{
+    max-width:520px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .shop-name{
+    margin:0 0 14px;
+    font-size:1.1rem;
+    font-weight:600;
+    letter-spacing:.08em;
+    color:var(--accent);
+  }
+  .shop-desc{
+    margin:0 0 26px;
+    font-size:.85rem;
+    line-height:1.9;
+    color:var(--text);
+  }
+
   /* ▼ 「App」タブ：MyTIMECAT 紹介パネル ▼
      LP本体は /timecard/ に置き、ここではその要約だけを見せる。
      「はじめる」はアプリ本体（timecard.mim-crt.com）へ、
@@ -1212,10 +1233,10 @@
     font-size:.7rem;
     color:#9096AD;
   }
-  /* タブが5つになったので、スマホ幅で1行に収まるよう間隔を詰める */
+  /* タブが6つになったので、スマホ幅で1行に収まるよう間隔を詰める */
   @media (max-width:440px){
-    /* 画面幅を5等分して、アイコンの間隔を均等にする */
-    .tab-nav{ display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:0; padding-left:12px; padding-right:12px; }
+    /* 画面幅を6等分して、アイコンの間隔を均等にする */
+    .tab-nav{ display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:0; padding-left:12px; padding-right:12px; }
     .tab-btn{ width:auto; }
   }
   @media (max-width:600px){
@@ -1391,7 +1412,8 @@
     "https://work.mim-crt.com",
     "https://www.instagram.com/mim_crt/",
     "https://x.com/_mim_crt_",
-    "https://www.youtube.com/@mim-crt"
+    "https://www.youtube.com/@mim-crt",
+    "https://ikumimimura.thebase.in/"
   ],
   "email": "contact@mim-crt.com"
 }
@@ -1450,9 +1472,10 @@
   <nav class="tab-nav" role="tablist" aria-label="ページ内カテゴリ" data-en-label="Page sections">
     <button type="button" class="tab-btn" id="tab-about" role="tab" aria-selected="true" aria-controls="panel-about"><img class="tab-icon" src="icons/icon-main.webp" alt="" aria-hidden="true"><span>About</span></button>
     <button type="button" class="tab-btn" id="tab-works" role="tab" aria-selected="false" aria-controls="panel-works" tabindex="-1"><img class="tab-icon" src="icons/icon-works.png" alt="" aria-hidden="true"><span>Works</span></button>
-    <button type="button" class="tab-btn" id="tab-diary" role="tab" aria-selected="false" aria-controls="panel-diary" tabindex="-1"><img class="tab-icon" src="icons/icon-daily.png" alt="" aria-hidden="true"><span>Diary</span></button>
+    <button type="button" class="tab-btn" id="tab-shop" role="tab" aria-selected="false" aria-controls="panel-shop" tabindex="-1"><img class="tab-icon" src="icons/icon-shop.svg" alt="" aria-hidden="true"><span>Shop</span></button>
     <button type="button" class="tab-btn" id="tab-app" role="tab" aria-selected="false" aria-controls="panel-app" tabindex="-1"><img class="tab-icon" src="timecard/img/cat-hachiware.png" alt="" aria-hidden="true"><span>App</span></button>
     <button type="button" class="tab-btn" id="tab-contact" role="tab" aria-selected="false" aria-controls="panel-contact" tabindex="-1"><img class="tab-icon" src="icons/icon-telephone.png" alt="" aria-hidden="true"><span>Contact</span></button>
+    <button type="button" class="tab-btn" id="tab-etc" role="tab" aria-selected="false" aria-controls="panel-etc" tabindex="-1"><img class="tab-icon" src="icons/icon-daily.png" alt="" aria-hidden="true"><span>etc</span></button>
   </nav>
 
   <div class="tab-panels">
@@ -1650,7 +1673,24 @@
 
   </section>
 
-  <section class="tab-panel" id="panel-diary" role="tabpanel" aria-labelledby="tab-diary" hidden>
+  <section class="tab-panel" id="panel-shop" role="tabpanel" aria-labelledby="tab-shop" hidden>
+    <p class="panel-lead" data-en="Original goods made with 3DCG modeling, sold through my BASE shop.">
+      3DCGモデリングで制作したオリジナルグッズを、BASEのショップで販売しています。
+    </p>
+
+    <div class="shop-panel">
+      <article class="shop-card">
+        <h3 class="shop-name">mim-crt &ldquo;みむくり&rdquo;</h3>
+        <p class="shop-desc" data-en="Figures and other original goods designed and modeled in 3DCG, then turned into real objects. The &ldquo;Mi&rdquo; earphone case is currently in preparation.">3DCGで設計・モデリングしたフィギュアやグッズを、実際のかたちにしてお届けするショップです。現在は「み」イヤホンケースを準備中です。</p>
+        <div class="app-actions">
+          <a class="app-btn app-btn--primary js-shop-link" href="https://ikumimimura.thebase.in/" target="_blank" rel="noopener noreferrer" data-en="Visit the SHOP">SHOPを見る</a>
+        </div>
+        <p class="app-note" data-en="Opens the BASE shop in a new tab.">BASEのショップページが新しいタブで開きます</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="panel-etc" role="tabpanel" aria-labelledby="tab-etc" hidden>
     <p class="panel-lead" data-en="A notebook for logging work activity, behind-the-scenes notes, and everyday things I notice.<br>I plan to update it regularly, including topics outside of 3DCG.">
       お仕事の活動記録や裏側、日々の気づきをまとめるノートです。<br>
       3DCG以外の話題も含め、随時更新していく予定です。
@@ -2537,7 +2577,7 @@
 </script>
 
 <script>
-  // カテゴリタブ切り替え（About / Works / Diary / App / Contact）：同一ページ内、URLは変更しない
+  // カテゴリタブ切り替え（About / Works / Shop / App / Contact / etc）：同一ページ内、URLは変更しない
   (function(){
     var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab-btn"));
     if (!tabs.length) return;
@@ -2563,6 +2603,7 @@
     function openFromHash(){
       var name = (location.hash || "").replace("#", "");
       if (!name) return;
+      if (name === "diary") name = "etc"; // 旧Diaryタブへのリンク用
       var target = document.getElementById("tab-" + name);
       if (target && tabs.indexOf(target) !== -1){
         activate(target, { noFocus: true });
@@ -2598,6 +2639,12 @@
   document.querySelectorAll(".js-app-start").forEach(function(a){
     a.addEventListener("click", function(){
       if (typeof gtag === "function") gtag("event", "start_app", { link_location: "portfolio_app_tab" });
+    });
+  });
+  // SHOPタブの「SHOPを見る」クリックをGA4のイベントとして記録
+  document.querySelectorAll(".js-shop-link").forEach(function(a){
+    a.addEventListener("click", function(){
+      if (typeof gtag === "function") gtag("event", "shop_click", { link_location: "portfolio_shop_tab" });
     });
   });
 </script>
