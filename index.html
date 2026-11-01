@@ -1066,11 +1066,19 @@
   }
   .shop-name{
     margin:0 0 14px;
-    font-size:1.1rem;
+    font-size:1rem;
     font-weight:600;
-    letter-spacing:.08em;
-    color:var(--accent);
+    letter-spacing:.04em;
+    word-break:break-all;
   }
+  .shop-name a{
+    color:var(--accent);
+    text-decoration:underline;
+    text-underline-offset:4px;
+  }
+  .shop-desc .nowrap{ white-space:nowrap; }
+  .shop-name a:hover,
+  .shop-name a:focus-visible{ opacity:.75; }
   .shop-desc{
     margin:0 0 26px;
     font-size:.85rem;
@@ -1680,12 +1688,8 @@
 
     <div class="shop-panel">
       <article class="shop-card">
-        <h3 class="shop-name">mim-crt &ldquo;みむくり&rdquo;</h3>
-        <p class="shop-desc" data-en="Figures and other original goods designed and modeled in 3DCG, then turned into real objects. The &ldquo;Mi&rdquo; earphone case is currently in preparation.">3DCGで設計・モデリングしたフィギュアやグッズを、実際のかたちにしてお届けするショップです。現在は「み」イヤホンケースを準備中です。</p>
-        <div class="app-actions">
-          <a class="app-btn app-btn--primary js-shop-link" href="https://ikumimimura.thebase.in/" target="_blank" rel="noopener noreferrer" data-en="Visit the SHOP">SHOPを見る</a>
-        </div>
-        <p class="app-note" data-en="Opens the BASE shop in a new tab.">BASEのショップページが新しいタブで開きます</p>
+        <p class="shop-name"><a class="js-shop-link" href="https://ikumimimura.thebase.in/" target="_blank" rel="noopener noreferrer">https://ikumimimura.thebase.in/</a></p>
+        <p class="shop-desc" data-en="A shop selling figures and goods designed and modeled in 3DCG.<br>The &ldquo;Mi&rdquo; earphone case is currently in preparation.">3DCGで設計・モデリングしたフィギュアやグッズの<span class="nowrap">販売ページ</span><br>現在は「み」イヤホンケースを準備中です。</p>
       </article>
     </div>
   </section>
@@ -2641,7 +2645,7 @@
       if (typeof gtag === "function") gtag("event", "start_app", { link_location: "portfolio_app_tab" });
     });
   });
-  // SHOPタブの「SHOPを見る」クリックをGA4のイベントとして記録
+  // ShopタブのショップURLのクリックをGA4のイベントとして記録
   document.querySelectorAll(".js-shop-link").forEach(function(a){
     a.addEventListener("click", function(){
       if (typeof gtag === "function") gtag("event", "shop_click", { link_location: "portfolio_shop_tab" });
